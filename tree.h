@@ -7,11 +7,12 @@ struct Node{
     Node *left;
     Node *right;
 
-    Node(std::string v);
+    Node(std::string valor);
 };
 
 bool operador_(std::string &operador);
 Node *arvore(std::string &expressão);
-
+int posOrdem_calcula(Node *elemento);
+void posOrdem_freeArvore(Node *elemento);
 
 #endif
