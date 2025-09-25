@@ -10,7 +10,7 @@ struct Node{
     Node(std::string valor);
 };
 
-bool operador_(std::string &operador);
+bool operador(std::string &operador);
 Node *arvore(std::string &expressão);
 int posOrdem_calcula(Node *elemento);
 void posOrdem_freeArvore(Node *elemento);

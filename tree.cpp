@@ -10,18 +10,18 @@ Node::Node(string valor){
     right = nullptr;
 }
 
-bool operador_(string &operador){
+bool operador(string &operador){
     return operador == "+" || operador == "-" || operador == "*" || operador == "/";
 }
 
 Node *arvore(string &expressão){
     stack<Node*> stk;
     stringstream str(expressão);
-    string operador;
+    string valor;
 
-    while(str >> operador){
-        if(!operador_(operador)){
-            stk.push(new Node(operador));
+    while(str >> valor){
+        if(!operador(valor)){
+            stk.push(new Node(valor));
         } else{
             if(stk.size() < 2){
                 throw runtime_error("expressão inválida!");
@@ -33,7 +33,7 @@ Node *arvore(string &expressão){
             Node *left = stk.top();
             stk.pop();
 
-            Node *opNode = new Node(operador);
+            Node *opNode = new Node(valor);
             opNode -> left = left;
             opNode -> right = right;
             stk.push(opNode); 
@@ -51,7 +51,7 @@ int posOrdem_calcula(Node *elemento){
         throw runtime_error("árvore vazia!");
     }
 
-    if(!operador_(elemento -> valor)){
+    if(!operador(elemento -> valor)){
         return stoi(elemento -> valor);
     }
 
@@ -65,8 +65,6 @@ int posOrdem_calcula(Node *elemento){
         if(right_v == 0) throw runtime_error("Erro, divisão por zero!");
         return left_v / right_v;
     }
-
-    throw runtime_error("operador inválido!");
 }
 
 void posOrdem_freeArvore(Node *elemento){
