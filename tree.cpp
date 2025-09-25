@@ -65,6 +65,8 @@ int posOrdem_calcula(Node *elemento){
         if(right_v == 0) throw runtime_error("Erro, divisão por zero!");
         return left_v / right_v;
     }
+
+    throw runtime_error("operador inválido!");
 }
 
 void posOrdem_freeArvore(Node *elemento){
